@@ -27,14 +27,22 @@ Copy DB dump files from wordpress to folder:
 public/uploads/db
 ```
 
-#### Step 4: Launch docker containers
+#### Step 4: Create .env file
+
+Copy .env-sample to .env
 
 ```bash
 cd ..
+cp .env-sample .env
+```
+
+#### Step 5: Launch docker containers
+
+```bash
 docker-compose up -d
 ```
 
-#### Step 5: Launch browser
+#### Step 6: Launch browser
 
 Launch your browser and open url: :
 ```
