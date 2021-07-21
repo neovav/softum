@@ -26,7 +26,7 @@ class DbHandler
         $result = [];
 
         if (!file_exists($path)) {
-            throw new \Exception('Данный файл отсутствует или неверный путь');
+            throw new \Exception('Данный файл - "' . basename($path) . '" отсутствует или неверный путь');
         }
 
         $sqlLists = explode("\n", file_get_contents($path));

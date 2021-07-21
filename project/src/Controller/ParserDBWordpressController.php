@@ -14,13 +14,20 @@ class ParserDBWordpressController extends AbstractController
     /**
      * @Route("/parse/{filename}", name="parser_db_wordpress")
      */
-    public function index(DbHandler $dbHandler, string $filename): Response
+    public function index(DbHandler $dbHandler, string $filename, Storage $storage): Response
     {
         $webPath = $this->getParameter('kernel.project_dir') . '/public/uploads/db/';
 
         $path = str_replace('../', '',"$webPath$filename");
 
-        $list = $dbHandler->listPosts($path);
+        try {
+            $list = $dbHandler->listPosts($path);
+        } catch (\Exception $e) {
+            return $this->forward('App\Controller\ListDBWordpressController::index', [
+                'storage'  => $storage,
+                'error' => $e->getMessage(),
+            ]);
+        }
 
         $response = $this->render('parser_db_wordpress/index.html.twig', [
             'file' => $path,

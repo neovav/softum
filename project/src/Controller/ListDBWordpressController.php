@@ -11,8 +11,9 @@ class ListDBWordpressController extends AbstractController
 {
     /**
      * @Route("/", name="list_db_wordpress")
+     * @Route("/parse", name="parse_list_db_wordpress")
      */
-    public function index(Storage $storage): Response
+    public function index(Storage $storage, string $error = null): Response
     {
         $webPath = $this->getParameter('kernel.project_dir') . '/public/uploads/db/';
 
@@ -20,6 +21,7 @@ class ListDBWordpressController extends AbstractController
 
         return $this->render('list_db_wordpress/index.html.twig', [
             'listFiles' => ($files->count() > 0) ? $files : null,
+            'error' => $error,
         ]);
     }
 }
