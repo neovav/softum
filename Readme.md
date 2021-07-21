@@ -1,4 +1,4 @@
-#Parsing a database dump from wordpress and generating xml with post content
+# Parsing a database dump from wordpress and generating xml with post content
 
 ## Description
 This is an example of parsing a database dump using the Symfony 4.4 framework and outputting all posts to XML
