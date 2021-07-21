@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ParserDBWordpressController!{% endblock %}
+
+{% block body %}
+    <style>
+        .list-db-wordpress, .list-db-wordpress ul {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .list-db-wordpress li {
+            list-style-type: none;
+        }
+
+        .list-db-wordpress li, .list-db-wordpress li input, .list-db-wordpress li label {
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="list-db-wordpress">
+        {% if listFiles %}
+            Список файлов из БД:
+            <form name="union_db" action="/union/" method="post">
+                <ul>
+                    {% for file in listFiles %}
+                        <li>
+                            <input type="checkbox" name="{{ file.getFilename() }}" value="{{ file.getFilename() }}" id="{{ file.getFilename() }}">
+                            <label for="{{ file.getFilename() }}">{{ file.getFilename() }}</label>
+                            <span> - </span>
+                            <span>
+                                <a href="/parse/{{ file.getFilename() }}" target="_blank">скачать</a>
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <input type="submit" value="Объединить">
+            </form>
+
+        {% else %}
+            Отсутствуют файлы с БД
+        {% endif %}
+    </div>
+{% endblock %}

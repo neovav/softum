@@ -1,0 +1,9 @@
+###> symfony/framework-bundle ###
+.env
+.idea
+/.idea
+/postgresql/data
+/.env.local
+/.env.local.php
+/.env.*.local
+###< symfony/framework-bundle ###

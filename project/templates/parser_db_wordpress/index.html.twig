@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<posts>
+{% if list %}
+{% for item in list %}
+    <item>
+        <title encode="base64">{{ item.title }}</title>
+        <content encode="base64">{{ item.content }}</content>
+    </item>
+{% endfor %}
+{% endif %}
+</posts>
